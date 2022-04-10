@@ -1,4 +1,4 @@
-Selecting Rows that Meet Certain Criteria Using "Order By"
+Ordering Rows Using "ORDER BY" Clause
 
 -- Select the first 5 rows from the specified columns & order by event_date
 SELECT 
@@ -103,8 +103,85 @@ WHERE
   demand_loss_mw IS NULL;
   
 -- Return rows where demand_loss_mw is not unknown or missing
-  SELECT * 
+SELECT * 
 FROM 
   grid   
 WHERE 
   demand_loss_mw IS NOT NULL;
+  
+Using the "AND" Clause When Looking for Two Conditions that Must Meet Two Sets of Criteria
+
+-- Show songs, artist, release_year from the songlist table where the release_year is greater than/equal to 1980, or less than/equal to 1990
+-- Order by artist & release_year
+SELECT 
+  song, 
+  artist, 
+  release_year
+FROM 
+  songlist 
+WHERE 
+  release_year >= 1980 
+  AND release_year <= 1990 
+ORDER BY 
+  artist, 
+  release_year;
+  
+  
+Using the "OR" Clause When Looking for Two Conditions that Can Be Either/Or
+
+-- Show songs, artist, release_year from the songlist table where the release_year is greater than/equal to 1980, or less than/equal to 1990
+-- Order by artist & release_year
+SELECT 
+  song, 
+  artist, 
+  release_year
+FROM 
+  songlist 
+WHERE 
+  release_year >= 1980 
+  OR release_year <= 1990 
+ORDER BY 
+  artist, 
+  release_year;
+  
+  
+Using (parentheses) in Queries to Obtain Clear Results
+
+  • Parenthetical search conditions are processed before nonparenthetical search conditions.
+  • Two or more parenthetical search conditions are processed from 
+    left to right.
+  • Embedded parenthetical search conditions within a search condition are processed from innermost to outermost.
+  
+ 
+Using the "LIKE" Clause to Find Data that Matches a Certain Element of a String or Pattern Matching
+
+
+Pattern String Criterion
+
+--'Sha%' Character string can be any length but must begin with “Sha”
+-- (e.g., Shannon, Sharon, Shawn)
+
+--'%son' Character string can be any length but must end with “son”
+-- (e.g., Benson, Johnson, Morrison)
+
+--'%han%' Character string can be any length but must contain “han”
+-- (e.g., Buchanan, handel, Johansen, Nathanson)
+
+
+--Select all artists beginning with B who released tracks in 1986, but also retrieve any records where the release_year is greater than 1990.
+SELECT 
+  artist, 
+  release_year, 
+  song 
+FROM 
+  songlist 
+WHERE 
+  (
+    artist LIKE 'B%' 
+    AND release_year = 1986
+  ) 
+  OR release_year > 1990
+ORDER BY 
+  release_year, 
+  artist, 
+  song; 
