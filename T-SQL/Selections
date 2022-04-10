@@ -24,3 +24,26 @@ SELECT
   distinct country as unique_country 
 FROM 
   eurovision;
+
+
+   -- Amend the code to select all columns
+SELECT *
+FROM 
+   eurovision
+
+
+
+-- Return all columns, restricting the percent of rows returned
+SELECT
+  top (50) PERCENT * 
+FROM 
+  eurovision;
+  
+  
+ -- Select country and event_year from eurovision
+Select 
+   country, event_year
+from 
+   eurovision; 
+   
+   
