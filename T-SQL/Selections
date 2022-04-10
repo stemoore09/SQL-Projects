@@ -1,3 +1,5 @@
+Selecting Single Columns from a Single Table
+
 -- SELECT the country column FROM the eurovision table
 SELECT
    country
@@ -12,12 +14,16 @@ FROM
   eurovision;
   
   
+Limiting Rows Selected from a Single Table
+
 -- Limit the number of rows returned to the first 50
 SELECT 
   top(50) points 
 FROM 
   eurovision;
-   
+  
+  
+Selecting Distinct Rows from a Single Table  
    
 -- Return unique countries and use an alias
 SELECT 
@@ -26,24 +32,29 @@ FROM
   eurovision;
 
 
+Selecting All Rows from a Single Table
+
    -- Amend the code to select all columns
 SELECT *
 FROM 
    eurovision
 
 
+Restricting the Number of Rows Selected from a Single Table
 
--- Return all columns, restricting the percent of rows returned
+-- Return all columns, restricting the top half of rows returned
 SELECT
   top (50) PERCENT * 
 FROM 
   eurovision;
   
   
+ Selecting Multiple Columns from a Single Table
+ 
  -- Select country and event_year from eurovision
-Select 
+SELECT 
    country, event_year
-from 
+FROM 
    eurovision; 
    
    
