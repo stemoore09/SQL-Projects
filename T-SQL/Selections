@@ -27,7 +27,7 @@ Selecting Distinct Rows from a Single Table
    
 -- Return unique countries and use an alias
 SELECT 
-  distinct country as unique_country 
+  distinct country AS unique_country 
 FROM 
   eurovision;
 
