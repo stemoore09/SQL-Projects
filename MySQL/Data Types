@@ -13,7 +13,7 @@ BINARY - BINARY LARGE OBJECT -  BLOB: Used to store binary data such as images, 
                                       processing files, spreadsheets). In many systems, the ALIAS's used for this data
                                       type are BINARY, BIT, and BIT VARYING.
 
-Types of Expressions
+**Types of Expressions**
 
 You will generally use the following three types of expressions when 
 working with SQL statements:
