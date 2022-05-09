@@ -6,6 +6,9 @@ CHARACTER VARYING - CHAR VARYING - VARCHAR: Varying-length character data type
 CHARACTER LARGE OBJECT - CHAR LARGE OBJECT - CLOB: When the length of a character string exceeds a system-defined max. 
                                                    In many systems, the ALIAS for CLOB is TEXT or MEMO .
 
+BOOLEAN: This data type stores true and false values, usually in a single binary bit. Some systems use BIT, INT, or 
+         TINYINT to store this data type.
+
 BINARY - BINARY LARGE OBJECT -  BLOB: Used to store binary data such as images, sounds, videos, embedded documents (word
                                       processing files, spreadsheets). In many systems, the ALIAS's used for this data
                                       type are BINARY, BIT, and BIT VARYING.
