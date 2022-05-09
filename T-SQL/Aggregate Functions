@@ -1,0 +1,59 @@
+Basic Aggregate Functions: COUNT, SUM, AVG, MIN, MAX. Supported by all database systems. 
+
+SUM Single Columns. Used to calculate the total amount of a specific column. 
+
+-- Find the total amount of MRO's in the nerc_region from the Grid table, but don't include any missing values
+SELECT 
+  SUM(demand_loss_mw) AS total 
+FROM 
+  grid 
+WHERE
+  demand_loss_mw IS NOT NULL 
+  AND nerc_region = 'mro';
+ 
+ 
+ COUNT is used to determine the number of rows, or the number of non-null values in a result set.
+ 
+  -- Obtain a count of 'grid_id'
+SELECT 
+  COUNT(grid_id) AS grid_total
+FROM 
+  grid;
+  
+  -- Obtain a count of RFC regions
+SELECT 
+  COUNT(grid_id) AS RFC_count
+FROM 
+  grid
+WHERE
+  nerc_region = 'RFC';
+  
+  
+ MIN, MAX and AVG. MAX = Largest Value, MIN = Smallest Value, AVG = Sum of Values/Total # of Values . If the value expression is a date or time, the result set
+ will be the latest date/time from the column or expression. 
+ 
+ 
+-- Find the minimum number of affected customers
+-- Only retrieve rows where demand_loss_mw has a value
+SELECT 
+  MIN(affected_customers) AS min_affected_customers 
+FROM 
+  grid
+WHERE
+  demand_loss_mw IS NOT NULL;
+  
+  --Next, find the maximum number of affected customers with the same parameters
+SELECT 
+  MAX(affected_customers) AS max_affected_customers 
+FROM 
+  grid
+WHERE 
+  demand_loss_mw IS NOT NULL;
+  
+  --Now, find the average number of affected customers with the same parameters
+SELECT 
+  AVG(affected_customers) AS avg_affected_customers 
+FROM 
+  grid
+WHERE 
+  demand_loss_mw IS NOT NULL;
