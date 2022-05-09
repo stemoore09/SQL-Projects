@@ -1,0 +1,22 @@
+The datatype in a column impacts what values are returned from your expression. Every column has an assigned data type
+that determines the types of values that can be stored in a column and the types of operations. 
+
+CHARACTER - CHAR: Fixed-length character data type
+CHARACTER VARYING - CHAR VARYING - VARCHAR: Varying-length character data type
+CHARACTER LARGE OBJECT - CHAR LARGE OBJECT - CLOB: When the length of a character string exceeds a system-defined max. 
+                                                   In many systems, the ALIAS for CLOB is TEXT or MEMO .
+
+BINARY - BINARY LARGE OBJECT -  BLOB: Used to store binary data such as images, sounds, videos, embedded documents (word
+                                      processing files, spreadsheets). In many systems, the ALIAS's used for this data
+                                      type are BINARY, BIT, and BIT VARYING.
+
+<b> Types of Expressions
+
+You will generally use the following three types of expressions when 
+working with SQL statements:
+
+CONCATENATION: Combining two or more character columns or literals into a single character string
+
+MATHEMATICAL: Adding, subtracting, multiplying, and dividing numeric columns or literals
+
+DATE AND TIME ARITHMETIC: Applying addition or subtraction to dates and times
