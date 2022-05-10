@@ -1,0 +1,62 @@
+We can find the length of a text column (number of characters, including spaces) using the LEN function. 
+Knowing the total length of a string is a great starting point for string calculations. 
+
+
+-- Calculate the length of the description column from the grid table
+SELECT 
+  LEN (description) AS description_length 
+FROM 
+  grid;
+
+
+If we want to extract a number of characters from the beginning of a string, use the LEFT function.
+
+
+-- Select the first 25 characters from the left of the description column
+SELECT 
+  LEFT(description, 25) AS first_25_left 
+FROM 
+  grid;
+
+
+If we want to extract a number of charactesr from the end of a string, use the RIGHT function.
+
+
+-- Amend the query to select 25 characters from the right of the description column
+SELECT 
+  RIGHT(description, 25) AS last_25_right 
+FROM 
+  grid;
+  
+  
+The CHARINDEX function helps us find a specific character within a string.
+
+Pattern String Criterion
+
+--'Sha%' Character string can be any length but must begin with “Sha”
+-- (e.g., Shannon, Sharon, Shawn)
+
+--'%son' Character string can be any length but must end with “son”
+-- (e.g., Benson, Johnson, Morrison)
+
+--'%han%' Character string can be any length but must contain “han”
+-- (e.g., Buchanan, handel, Johansen, Nathanson)
+
+
+-- Complete the query to find `Weather` within the description column
+SELECT 
+  description, 
+  CHARINDEX('weather', description) 
+FROM 
+  grid
+WHERE description LIKE '%Weather%';
+
+-- Complete the query to find the length of `Weather'
+SELECT 
+  description, 
+  CHARINDEX('Weather', description) AS start_of_string,
+  LEN('Weather') AS length_of_string 
+FROM 
+  grid
+WHERE
+  description LIKE '%weather%';
