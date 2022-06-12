@@ -1,0 +1,122 @@
+GROUP BY Clause
+
+--Select nerc_region and the sum of demand_loss_mw for each region.
+--Exclude values where demand_loss_mw is NULL.
+--Group the results by nerc_region.
+--Arrange in descending order of demand_loss.
+
+-- Select the region column
+SELECT 
+  nerc_region,
+  -- Sum the demand_loss_mw column
+  SUM(demand_loss_mw) AS demand_loss
+FROM 
+  grid
+  -- Exclude NULL values of demand_loss
+WHERE 
+  demand_loss_mw IS NOT NULL
+  -- Group the results by nerc_region
+GROUP BY 
+  nerc_region
+  -- Order the results in descending order of demand_loss
+ORDER BY 
+  demand_loss DESC;
+  
+  
+HAVING Clause
+
+--Can use aggregate functions in SELECT
+--Filter data using WHERE
+--Split data into groups using GROUP BY
+--What if we want to sum values based on groups?
+--And then fiter on those sums?
+
+--Modify the provided query to remove the WHERE clause.
+--Replace it with a HAVING clause so that only results with a total demand_loss_mw of greater than 10000 are returned.
+--Business Case: "Find the regions where the total losses exceed 10,000."
+
+SELECT 
+  nerc_region, 
+  SUM (demand_loss_mw) AS demand_loss 
+FROM 
+  grid 
+  -- Remove the WHERE clause
+GROUP BY 
+  nerc_region 
+  -- Enter a new HAVING clause so that the sum of demand_loss_mw is greater than 10000
+HAVING 
+  SUM(demand_loss_mw) > 10000 
+ORDER BY 
+  demand_loss DESC;
+
+Grouping Together
+
+ --Use MIN and MAX to retrieve the minimum and maximum values for the place and points columns respectively.
+ 
+ -- Retrieve the minimum and maximum place, and point values
+SELECT 
+  -- the lower the value the higher the place, so MIN = the highest placing
+  MIN(place) AS hi_place, 
+  MAX(place) AS lo_place, 
+  -- Retrieve the minimum and maximum points values. This time MIN = the lowest points value
+  MIN(points) AS min_points, 
+  MAX(points) AS max_points 
+FROM 
+  eurovision;
+  
+--Let's obtain more insight from our results by adding a GROUP BY clause. Group the results by country.
+-- Retrieve the minimum and maximum place, and point values
+
+SELECT 
+  -- the lower the value the higher the place, so MIN = the highest placing
+  MIN(place) AS hi_place, 
+  MAX(place) AS lo_place,  
+  -- Retrieve the minimum and maximum points values. This time MIN = the lowest points value
+  MIN(points) AS min_points, 
+  MAX(points) AS max_points 
+FROM 
+  eurovision
+  -- Group by country
+GROUP BY
+  country;
+  
+--The previous query results did not identify the country. Let's amend the query, returning the count of entries per country and the country column.
+--Complete the aggregate section by finding the average place for each country.
+
+-- Obtain a count for each country
+SELECT 
+  COUNT(country) AS country_count, 
+  -- Retrieve the country column
+  country, 
+  -- Return the average of the Place column 
+  AVG(place) AS average_place, 
+  AVG(points) AS avg_points, 
+  MIN(points) AS min_points, 
+  MAX(points) AS max_points 
+FROM 
+  eurovision 
+GROUP BY 
+  country;
+  
+--Finally, our results are skewed by countries who only have one entry. 
+--Apply a filter so we only return rows where the country_count is greater than 5. 
+--Then arrange by avg_place in ascending order, and avg_points in descending order.
+
+SELECT 
+  country, 
+  COUNT (country) AS country_count, 
+  AVG (place) AS avg_place, 
+  AVG (points) AS avg_points, 
+  MIN (points) AS min_points, 
+  MAX (points) AS max_points 
+FROM 
+  eurovision 
+GROUP BY 
+  country 
+  -- The country column should only contain those with a count greater than 5
+HAVING 
+  COUNT(country) > 5 
+  -- Arrange columns in the correct order
+ORDER BY 
+  avg_place, 
+  avg_points DESC;
