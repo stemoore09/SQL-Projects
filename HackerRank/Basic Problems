@@ -17,3 +17,9 @@ WHERE MOD(ID,2) = 0;
 --Query ODD Numbers
 
 MOD(ID,2) !=0
+
+--Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from STATION. Your result cannot contain duplicates.
+
+SEKECT DISTINCT city 
+FROM station 
+WHERE city LIKE '[aeiou]%';
