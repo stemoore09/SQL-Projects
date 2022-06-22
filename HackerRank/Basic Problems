@@ -1,0 +1,19 @@
+/*
+This file includes basic SQL problems from the website HackerRank
+*/
+
+
+--Find the difference between the total number of CITY entries in the table and the number of distinct CITY entries in the table.
+
+SELECT COUNT(city)-COUNT(DISTINCT city) 
+FROM STATION;
+
+--Query a list of city names from the station table for cities that have an even ID number
+
+SELECT DISTINCT city
+FROM station
+WHERE MOD(ID,2) = 0;
+
+--Query ODD Numbers
+
+MOD(ID,2) !=0
