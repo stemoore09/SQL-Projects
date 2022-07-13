@@ -152,3 +152,11 @@ In the next concepts, you will be learning about Logical Operators. Logical Oper
 Wild Cards
 */
 
+--'Sha%' Character string can be any length but must begin with “Sha”
+-- (e.g., Shannon, Sharon, Shawn)
+
+--'%son' Character string can be any length but must end with “son”
+-- (e.g., Benson, Johnson, Morrison)
+
+--'%han%' Character string can be any length but must contain “han”
+-- (e.g., Buchanan, handel, Johansen, Nathanson)
