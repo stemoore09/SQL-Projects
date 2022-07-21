@@ -32,3 +32,36 @@ FROM accounts
 JOIN orders
 ON orders.account_id=accounts.id;
 
+--Try pulling channel column from the web_events table, the name column from the accounts table & total orders from the orders tables.
+--This query is pulling various columns from more than 2 tables using the same syntax logic. 
+
+SELECT web_events.channel, accounts.name, orders.total
+FROM web_events
+JOIN accounts
+ON web_events.account_id = accounts.id
+JOIN orders
+ON accounts.id = orders.account_id;
+
+
+--Provide a table for all web_events associated with account name of Walmart. There should be three columns.
+--Be sure to include the primary_poc, time of the event, and the channel for each event. 
+--Additionally, you might choose to add a fourth column to assure only Walmart events were chosen.
+  
+SELECT a.primary_poc, w.occurred_at, w.channel, a.name
+FROM web_events w
+JOIN accounts a
+ON w.account_id = a.id
+WHERE a.name = 'Walmart';
+
+vs. with no aliases
+
+SELECT accounts.primary_poc, accounts.name, web_events.channel, web_events.occurred_at
+FROM web_events
+JOIN accounts
+ON web_events.account_id = accounts.id
+WHERE accounts.name = 'Walmart';
+
+--Provide a table that provides the region for each sales_rep along with their associated accounts.
+--Your final table should include three columns: the region name, the sales rep name, and the account name.
+--Sort the accounts alphabetically (A-Z) according to account name.
+
