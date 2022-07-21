@@ -1,0 +1,33 @@
+/*
+Inner Joins
+*/
+
+INNER JOIN = JOIN
+
+Syntax: SELECT table1.column_name, table2.column_name
+        FROM table1
+        JOIN table2
+        ON table1.PK_column_name = table2.FK_column_name
+
+1.) The table name is always before the period.
+2.) The column you want from that table is always after the period.
+
+
+--Try pulling all the data from the accounts table, and all the data from the orders table.
+--The match is the Accounts ID which are included in both tables linking the information.
+--Account ID in the Accounts Table = ID; The Account ID in the Orders Table = Account_ID. 
+
+SELECT accounts.*,orders.*
+FROM accounts
+JOIN orders
+ON accounts.id=orders.account_id;
+
+--Try pulling standard_qty, gloss_qty, and poster_qty from the orders table, and the website and the primary_poc from the accounts table.
+--The match is the Accounts ID which are included in both tables linking the information.
+--Account ID in the Accounts Table = ID; The Account ID in the Orders Table = Account_ID. 
+
+SELECT orders.standard_qty,orders.gloss_qty,orders.poster_qty,accounts.website,accounts.primary_poc
+FROM accounts
+JOIN orders
+ON orders.account_id=accounts.id;
+
