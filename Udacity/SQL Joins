@@ -11,6 +11,7 @@ Syntax: SELECT table1.column_name, table2.column_name
 
 1.) The table name is always before the period.
 2.) The column you want from that table is always after the period.
+3.) The ordering of which table name goes first in the ON statement doesn't matter.
 
 
 --Try pulling all the data from the accounts table, and all the data from the orders table.
