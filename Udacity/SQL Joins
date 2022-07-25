@@ -89,7 +89,7 @@ ORDER BY a.name;
 --Your final table should have 3 columns: region name, account name, and unit price.
 --A few accounts have 0 for total, so I divided by (total + 0.01) to assure not dividing by zero.
 --To query this successfully the tables need to be joined in the correct order: Region > Sales_Reps > Accounts > Orders
---The ERD will show how the tables are linked. 
+--The ERD will show how the tables are linked to order successfully. 
 
 SELECT a.name account, o.total_amt_usd/(total+0.01) unit_price, r.name region
 FROM region r
