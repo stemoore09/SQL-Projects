@@ -14,6 +14,13 @@ Syntax: SELECT table1.column_name, table2.column_name
 3.) The ordering of which table name goes first in the ON statement doesn't matter.
 
 
+*Inner Join Venn Diagram*
+
+Left Circle represents the table in the FROM Clause
+Right Circle represents the table in the JOIN Clause
+Overlapping Middle Section represents all rows where the ON statement is true
+
+
 --Try pulling all the data from the accounts table, and all the data from the orders table.
 --The match is the Accounts ID which are included in both tables linking the information.
 --Account ID in the Accounts Table = ID; The Account ID in the Orders Table = Account_ID. 
@@ -99,10 +106,3 @@ JOIN accounts a
 ON a.sales_rep_id = s.id
 JOIN orders o
 ON a.id = o.account_id;
-
-
-
-
-
-
-
