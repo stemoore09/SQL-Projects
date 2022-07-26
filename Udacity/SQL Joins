@@ -9,16 +9,22 @@ Syntax: SELECT table1.column_name, table2.column_name
         JOIN table2
         ON table1.PK_column_name = table2.FK_column_name
 
-1.) The table name is always before the period.
-2.) The column you want from that table is always after the period.
-3.) The ordering of which table name goes first in the ON statement doesn't matter.
+        1.) The table name is always before the period.
+        2.) The column you want from that table is always after the period.
+        3.) The ordering of which table name goes first in the ON statement doesn't matter.
 
 
 *Inner Join Venn Diagram*
 
-Left Circle represents the table in the FROM Clause
-Right Circle represents the table in the JOIN Clause
-Overlapping Middle Section represents all rows where the ON statement is true
+        --Left Circle represents the table in the FROM Clause
+        --Right Circle represents the table in the JOIN Clause
+        --Overlapping Middle Section represents all rows where the ON statement is true
+
+
+        [If you have two or more columns in your SELECT that have the same name after the table name such as accounts.name
+        [and sales_reps.name you will need to alias them. Otherwise it will only show one of the columns.
+        [You can alias them like accounts.name AS AcountName, sales_rep.name AS SalesRepName
+
 
 
 --Try pulling all the data from the accounts table, and all the data from the orders table.
@@ -106,3 +112,38 @@ JOIN accounts a
 ON a.sales_rep_id = s.id
 JOIN orders o
 ON a.id = o.account_id;
+
+
+/*
+Outer Joins
+*/
+
+        1.) LEFT OUTER JOIN = LEFT JOIN
+        2.) RIGHT OUTER JOIN = RIGHT JOIN
+        3.) FULL OUTER JOIN = OUTER JOIN
+
+LEFT & RIGHT JOIN Are Functionally Equivalent. Using LEFT join is best practice. 
+
+Syntax: SELECT tabl1.column_name1, table1.column_name2, table2.column_name3
+        FROM left table 1
+        LEFT JOIN right table 2
+        
+        --Results from this query will include all the matching rows from the right table 2, and the ones that did not match from the left table 1.
+
+        [We are essentially JOINing the matching PK-FK links from the two tables, as we did before, but we are also pulling all the additional
+        [rows from the Country table even if they don't have a match in the State table. Therefore, we obtain all the rows of the INNER JOIN,
+        [but we also get additional rows from the table in the FROM.
+
+
+/*
+Joins & Filtering
+*/
+
+Syntax: SELECT ____, ___, ___
+        FROM ___,
+        LEFT JOIN ___,
+        ON ___,
+        AND ___ = ___ ; **vs** WHERE ___ = ___ ;
+        
+        --First query will process the filter first, then the ON resulting in all the rows, and marking the filtered data. (more rows returned)
+        --Second query will process the ON first, then the filter, showing only the filtered accounts. (less rows returned)
