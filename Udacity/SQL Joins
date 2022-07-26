@@ -147,3 +147,5 @@ Syntax: SELECT ____, ___, ___
         
         --First query will process the filter first, then the ON resulting in all the rows, and marking the filtered data. (more rows returned)
         --Second query will process the ON first, then the filter, showing only the filtered accounts. (less rows returned)
+
+
