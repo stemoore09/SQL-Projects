@@ -1,0 +1,64 @@
+--CREATING A TABLE
+CREATE TABLE tracks(
+  track VARCHAR(200), 
+  album VARCHAR(160), 
+  track_length_mins INT
+);
+
+--INSERTING ROWS IN A TABLE
+INSERT INTO tracks
+(TRACK, ALBUM, track_length_mins)
+VALUES
+  ('BASKET CASE', 'DOOKIE', 3);
+
+SELECT 
+  *
+FROM 
+  tracks;
+    
+    
+--SYNTAX
+UPDATE table
+SET column=value
+WHERE-- Condition(s);
+
+--SYNTAX
+UPDATE
+table
+SET  
+column1 = value1,   
+column2 = value2 
+WHERE-- Condition(s);
+
+--EXAMPLE 
+UPDATE 
+  ALBUM   
+SET 
+  TITLE = 'Pure Cult: The Best Of The Cult'
+WHERE album_id = 213;
+
+
+--DELETING RECORDS/ROWS 
+DELETE FROM 
+  ALBUM 
+WHERE 
+  ALBUM_ID = 1 
+    
+    
+--TEMPORARY TABLE
+--RETRIEVING DATA FROM EXISTING TABLES TO STORE IN A TEMPORARY, LOCAL TABLE.
+--"SELECT INTO"
+
+SELECT  album.title AS album_title,
+  artist.name as artist,
+  MAX(track.milliseconds / (1000 * 60) % 60 ) AS max_track_length_mins
+INTO #maxtracks
+FROM album
+INNER JOIN artist ON album.artist_id = artist.artist_id
+INNER JOIN TRACK ON TRACK.ALBUM_ID = ALBUM.ALBUM_ID 
+GROUP BY artist.artist_id, album.title, artist.name,album.album_id
+
+-- Run the final SELECT query to retrieve the results from the temporary table
+SELECT album_title, artist, max_track_length_mins
+FROM  #maxtracks
+ORDER BY max_track_length_mins DESC, artist;
