@@ -1,3 +1,6 @@
+Examples of DDL commands include CREATE, ALTER, DROP, TRUNCATE, RENAME, and CREATE INDEX
+
+
 --CREATING A TABLE
 CREATE TABLE tracks(
   track VARCHAR(200), 
